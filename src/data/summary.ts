@@ -1,6 +1,6 @@
-import { Customers } from "./customer";
+import { Customer } from "./customer";
 
-export function summarise(customers: Customers[]) {
+export function summarise(customers: Customer[]) {
   const total = customers.reduce((sum, c) => sum + c.balance, 0);
 
   const owing = customers.filter((c) => c.balance > 0);

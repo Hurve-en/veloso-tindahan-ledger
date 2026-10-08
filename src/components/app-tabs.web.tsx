@@ -1,13 +1,13 @@
 import {
-  Tabs,
   TabList,
-  TabTrigger,
-  TabSlot,
-  TabTriggerSlotProps,
   TabListProps,
+  Tabs,
+  TabSlot,
+  TabTrigger,
+  TabTriggerSlotProps,
 } from "expo-router/ui";
 import { SymbolView } from "expo-symbols";
-import { Pressable, useColorScheme, View, StyleSheet } from "react-native";
+import { Pressable, StyleSheet, useColorScheme, View } from "react-native";
 
 import { ExternalLink } from "./external-link";
 import { ThemedText } from "./themed-text";
@@ -15,7 +15,7 @@ import { ThemedView } from "./themed-view";
 
 import { Colors, MaxContentWidth, Spacing } from "@/constants/theme";
 
-export function AppTabs() {
+export default function AppTabs() {
   return (
     <Tabs>
       <TabSlot style={{ height: "100%" }} />
@@ -24,16 +24,17 @@ export function AppTabs() {
           <TabTrigger name="home" href="/" asChild>
             <TabButton>Home</TabButton>
           </TabTrigger>
-          <TabTrigger name="customer" href="/customer" asChild>
+          <TabTrigger name="customers" href="/(tabs)/customer" asChild>
             <TabButton>Customers</TabButton>
+          </TabTrigger>
+          <TabTrigger name="account" href="/account" asChild>
+            <TabButton>Account</TabButton>
           </TabTrigger>
         </CustomTabList>
       </TabList>
     </Tabs>
   );
 }
-
-export default AppTabs;
 
 export function TabButton({
   children,
@@ -65,7 +66,7 @@ export function CustomTabList(props: TabListProps) {
     <View {...props} style={styles.tabListContainer}>
       <ThemedView type="backgroundElement" style={styles.innerContainer}>
         <ThemedText type="smallBold" style={styles.brandText}>
-          Expo Starter
+          Tindahan ni Rene
         </ThemedText>
 
         {props.children}

@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { fetchCustomer, Customers } from "@/data/customer";
+import { Customer, fetchCustomer } from "@/data/customer";
 import { problemFor } from "@/data/problem";
 
 export default function CustomerDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
 
-  const [customer, setCustomer] = useState<Customers | null>(null);
+  const [customer, setCustomer] = useState<Customer | null>(null);
   const [status, setStatus] = useState<"loading" | "error" | "content">(
     "loading",
   );
