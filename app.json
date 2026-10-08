@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "hurve-en",
-    "slug": "hurve-en",
+    "name": "Tindahan Ledger",
+    "slug": "tindahan-ledger",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "hurveen",
+    "scheme": "tindahanledger",
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon"
@@ -31,6 +31,15 @@
           "backgroundColor": "#208AEF",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
+        }
+      ],
+      "expo-image",
+      "expo-web-browser",
+      "expo-sqlite",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Tindahan Ledger uses the camera to take a photo of the store."
         }
       ]
     ],

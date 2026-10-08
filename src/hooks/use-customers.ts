@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import { fetchCustomers, Customers } from "@/data/customer";
+import { Customer, fetchCustomers } from "@/data/customer";
 import { problemFor, Status } from "@/data/problem";
 
 export function useCustomers() {
   const [status, setStatus] = useState<Status>("loading");
-  const [customers, setCustomers] = useState<Customers[]>([]);
+  const [customers, setCustomers] = useState<Customer[]>([]);
   const [problem, setProblem] = useState("");
   const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
-    setStatus("loading");
-
     fetchCustomers()
       .then((data) => {
         setCustomers(data);
@@ -27,7 +25,11 @@ export function useCustomers() {
     status,
     customers,
     problem,
-    retry: () => setAttempt(attempt + 1),
+    // Changing the attempt value reloads the list without remounting the screen.
+    retry: () => {
+      setStatus("loading");
+      setAttempt((value) => value + 1);
+    },
   };
 }
 

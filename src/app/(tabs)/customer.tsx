@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { CustomerRow } from "@/components/customer-row";
-import { addCustomer, Customers } from "@/data/customer";
+import { addCustomer } from "@/data/customer";
 import { router } from "expo-router";
 import { useCustomers } from "@/hooks/use-customers";
 

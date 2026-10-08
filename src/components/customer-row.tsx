@@ -1,4 +1,6 @@
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
+
+import { ThemedText } from "@/components/themed-text";
 
 export interface CustomerRowProps {
   id: string;
@@ -12,37 +14,40 @@ export interface CustomerRowProps {
 export function CustomerRow({
   name,
   balance,
-  lastPaid,
-  defaultExpanded = false,
   onPress,
 }: CustomerRowProps) {
   return (
-    <Pressable onPress={onPress} style={styles.row}>
-      <Text style={styles.name}>{name}</Text>
-      <Text style={styles.balance}>₱ {balance.toFixed(2)}</Text>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [styles.row, pressed && styles.pressed]}
+    >
+      <View>
+        <ThemedText style={styles.name}>{name}</ThemedText>
+        <ThemedText style={styles.secondary} type="small">
+          View customer ledger
+        </ThemedText>
+      </View>
+      <ThemedText style={styles.balance}>
+        ₱ {balance.toFixed(2)}
+      </ThemedText>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   row: {
-    paddingVertical: 14,
-    borderBottomWidth: 1,
-    borderColor: "#e3e3e3",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    borderColor: "#E8E5DD",
+    borderRadius: 12,
+    borderWidth: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+    padding: 16,
   },
-  name: {
-    fontSize: 17,
-    fontWeight: "500",
-  },
-  balance: {
-    fontSize: 13,
-    fontWeight: "600",
-    marginTop: 2,
-  },
-  lastPaid: {
-    color: "#333",
-    fontSize: 13,
-    fontWeight: "600",
-    marginTop: 4,
-  },
+  pressed: { opacity: 0.72 },
+  name: { color: "#242424", fontSize: 17, fontWeight: "700" },
+  secondary: { color: "#6B685F" },
+  balance: { color: "#242424", fontSize: 16, fontWeight: "700", marginLeft: 12 },
 });
